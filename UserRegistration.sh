@@ -10,9 +10,9 @@ function firstName()
 
 	if [[ $firstName =~ $regexPattern ]]
 	then
-		printf "First name is valid."
+		echo "First name is valid."
 	else
-		printf "Invalid first name please enter name starts with capital and has minimum 3 characters."
+		echo "Invalid first name please enter name starts with capital and has minimum 3 characters."
 	fi
 }
 
@@ -24,26 +24,41 @@ function lastName()
 
 	if [[ $lastName =~ $regexPattern ]]
 	then
-		printf "Last name is valid."
+		echo "Last name is valid."
 	else
-		printf "Invalid last name please enter name starts with capital and has minimum 3 characters."
+		echo "Invalid last name please enter name starts with capital and has minimum 3 characters."
 	fi
 }
 
 #FUNCTION FOR VALIDATE EMAIL USING REGEX
 function email()
 {
-	read -p "Enter email :" email
+	read -p "Enter email: " email
 	local regexPattern="^[a-zA-Z0-9]+([._+-]?[a-zA-Z0-9]+)?[@][a-zA-Z0-9]+[.][a-zA-Z]{2,3}([.][a-zA-Z]{2,3})?$"
 
 	if [[ $email =~ $regexPattern ]]
 	then
-		printf "Valid email."
+		echo "Valid email."
 	else
-		printf "Invalid email."
+		echo "Invalid email."
+	fi
+}
+
+#FUNCTION TO VALIDATE MOBILE NUMBER IN REGEX
+function mobileNumber()
+{
+	read -p "Enter mobile number: " mobileNumber
+	local regexPattern="^[0-9]{2}[ ][0-9]{10}$"
+
+	if [[ $mobileNumber =~ $regexPattern ]]
+	then
+		echo "Valid mobile number."
+	else
+		echo "Invalid mobile number."
 	fi
 }
 
 firstName
 lastName
 email
+mobileNumber
