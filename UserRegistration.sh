@@ -16,4 +16,19 @@ function firstName()
 	fi
 }
 
+#FUNCTION FOR VALIDATE LAST NAME USING REGEX
+function lastName()
+{
+	read -p "Enter last name: " lastName
+	local regexPattern="^[A-Z][a-zA-Z]{2,}$"
+
+	if [[ $lastName =~ $regexPattern ]]
+	then
+		printf "Last name is valid."
+	else
+		printf "Invalid last name please enter name starts with capital and has minimum 3 characters."
+	fi
+}
+
 firstName
+lastName
