@@ -30,5 +30,20 @@ function lastName()
 	fi
 }
 
+#FUNCTION FOR VALIDATE EMAIL USING REGEX
+function email()
+{
+	read -p "Enter email :" email
+	local regexPattern="^[a-zA-Z0-9]+([._+-]?[a-zA-Z0-9]+)?[@][a-zA-Z0-9]+[.][a-zA-Z]{2,3}([.][a-zA-Z]{2,3})?$"
+
+	if [[ $email =~ $regexPattern ]]
+	then
+		printf "Valid email."
+	else
+		printf "Invalid email."
+	fi
+}
+
 firstName
 lastName
+email
