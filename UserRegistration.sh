@@ -3,7 +3,7 @@
 echo " ****************************** WELCOME TO USER REGISTRATION ****************************** "
 
 #FUNCTION FOR VALIDATE FIRST NAME USING REGEX
-function firstName()
+function validateFirstName()
 {
 	read -p "Enter first name: " firstName
 	local regexPattern="^[A-Z][a-zA-Z]{2,}$"
@@ -17,7 +17,7 @@ function firstName()
 }
 
 #FUNCTION FOR VALIDATE LAST NAME USING REGEX
-function lastName()
+function validateLastName()
 {
 	read -p "Enter last name: " lastName
 	local regexPattern="^[A-Z][a-zA-Z]{2,}$"
@@ -31,7 +31,7 @@ function lastName()
 }
 
 #FUNCTION FOR VALIDATE EMAIL USING REGEX
-function email()
+function validateEmail()
 {
 	read -p "Enter email: " email
 	local regexPattern="^[a-zA-Z0-9]+([._+-]?[a-zA-Z0-9]+)?[@][a-zA-Z0-9]+[.][a-zA-Z]{2,3}([.][a-zA-Z]{2,3})?$"
@@ -45,7 +45,7 @@ function email()
 }
 
 #FUNCTION TO VALIDATE MOBILE NUMBER IN REGEX
-function mobileNumber()
+function validateMobileNumber()
 {
 	read -p "Enter mobile number: " mobileNumber
 	local regexPattern="^[0-9]{2}[ ][0-9]{10}$"
@@ -58,7 +58,22 @@ function mobileNumber()
 	fi
 }
 
-firstName
-lastName
-email
-mobileNumber
+##FUNCTION TO VALIDATE PASSWORD USING REGEX PATTERN
+function validatePassword()
+{
+	read -p "Enter password: " password
+	regexPasswordRule1="^[a-zA-Z0-9]{8,}$"
+	if [[ $password =~ $regexPasswordRule1 ]]
+	then
+		echo "Valid password."
+	else
+		echo "Invalid password please enter minimum 8 character password."
+	fi
+}
+
+
+validateFirstName
+validateLastName
+validateEmail
+validateMobileNumber
+validatePassword
