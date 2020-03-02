@@ -58,16 +58,19 @@ function validateMobileNumber()
 	fi
 }
 
-##FUNCTION TO VALIDATE PASSWORD USING REGEX PATTERN
+#FUNCTION TO VALIDATE PASSWORD USING REGEX PATTERN
 function validatePassword()
 {
 	read -p "Enter password: " password
 	regexPasswordRule1="^[a-zA-Z0-9]{8,}$"
-	if [[ $password =~ $regexPasswordRule1 ]]
+	regexPasswordRule2="^([A-Z]+[a-z]*)+|([a-z]*[A-Z]+[a-z]*)+|([a-z]*[A-Z]+)+$"
+
+	if [[ $password =~ $regexPasswordRule2 ]] && [[ ${#password} -gt 8 ]]
 	then
 		echo "Valid password."
 	else
 		echo "Invalid password please enter minimum 8 character password."
+		echo "Should have at least 1 upper case."
 	fi
 }
 
