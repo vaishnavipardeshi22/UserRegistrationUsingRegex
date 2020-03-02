@@ -62,15 +62,17 @@ function validateMobileNumber()
 function validatePassword()
 {
 	read -p "Enter password: " password
-	regexPasswordRule1="^[a-zA-Z0-9]{8,}$"
+	regexPasswordRule1="^[a-zA-Z]{8,}$"
 	regexPasswordRule2="^([A-Z]+[a-z]*)+|([a-z]*[A-Z]+[a-z]*)+|([a-z]*[A-Z]+)+$"
+	regexPasswordRule3="^([a-zA-Z]*[0-9]+[a-zA-Z]*[A-Z]+)+|([A-Z]+[a-zA-Z]*[0-9]+[a-zA-Z]*)+$"
 
-	if [[ $password =~ $regexPasswordRule2 ]] && [[ ${#password} -gt 8 ]]
+	if [[ $password =~ $regexPasswordRule3 ]] && [[ ${#password} -ge 8 ]]
 	then
 		echo "Valid password."
 	else
 		echo "Invalid password please enter minimum 8 character password."
 		echo "Should have at least 1 upper case."
+		echo "Should have at least 1 numeric number."
 	fi
 }
 
@@ -79,4 +81,4 @@ validateFirstName
 validateLastName
 validateEmail
 validateMobileNumber
-validatePassword
+validatePassword $password
